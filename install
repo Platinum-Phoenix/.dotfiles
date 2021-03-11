@@ -1,0 +1,72 @@
+#!/bin/sh #####################################################
+# Description:
+#   My dotfile install script. Moves previous configurations
+#   into `~/.dotfiles.old`
+# Author:
+#   Phoenix
+# 
+
+
+###############################
+# =| Variables
+
+BOLD=$(tput bold)
+STATUS=$(tput setaf 4)
+WARN=$(tput setaf 3)
+ERROR=$(tput setaf 1)
+RESET=$(tput sgr0)
+
+DOTFILES=".zshrc .vimrc .gitignore .gitconfig Brewfile"
+# Change this to decide where your dotfiles go
+DOTFILESDIR=~/.dotfiles
+
+###############################
+# =| Functions
+
+lk() {
+    ln -sf $DOTFILESDIR/$1 ~/$1
+}
+
+lnk() {
+    ln -sf $DOTFILESDIR/$1 ~/$2
+}
+
+status() {
+    echo "$STATUS$BOLD$@$RESET"
+}
+
+showHelp() {
+    cat <<EOF
+Usage: install [options]
+
+Options:
+    -h, --help      Show this help message
+    --version       Show the version
+
+EOF
+
+    exit 0
+}
+
+###############################
+# =| Main
+
+status "[install]"
+
+status "[linking]"
+
+for file in $DOTFILES; do
+    echo $file
+    if [ -f "~/$file" ]; then
+        echo "~/$file already exists; backing it up as ~/dotfiles.old/$file/ ..."
+        mv "~/$file" ~/.dotfiles.old/$file/
+    fi
+
+    lk "$file"
+done
+
+lnk custom .oh-my-zsh/custom
+
+
+
+ 
