@@ -1,4 +1,4 @@
-#!/bin/sh #####################################################
+#!/bin/bash 
 # Description:
 #   My dotfile install script. Moves previous configurations
 #   into `~/.dotfiles.old`
@@ -16,8 +16,8 @@ WARN=`tput setaf 3`
 ERROR=`tput setaf 1`
 RESET=`tput sgr0`
 
-DOTFILES=(
-    ".zshrc" ".vimrc" ".gitignore" ".gitconfig" "Brewfile" ".tmux.conf"
+DOTFILES=( \
+    ".zshrc" ".vimrc" ".gitignore" ".gitconfig" "Brewfile" ".tmux.conf" \
 )
 
 # Change this to decide where your dotfiles go
@@ -58,11 +58,22 @@ EOF
 
 status "install"
 
+mkdir -p "$HOME/.zsh"
+
 status "fetching utility programs"
 
+echo "oh-my-zsh"
+sh -c "$(curl -fsSL ${GITHUB_RAW}/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "zsh-syntax-highlighting"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+    "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+
 echo "clang-format.py"
-curl "$GITHUB_RAW/llvm-mirror/clang/master/tools/clang-format/clang-format.py" \
+curl "${GITHUB_RAW}/llvm-mirror/clang/master/tools/clang-format/clang-format.py" \
     > clang-format.py
+
+git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 
 status "linking"
 
@@ -75,7 +86,6 @@ for file in "${DOTFILES[@]}"; do
 
     lk "$file"
 done
-
 
 lnk custom .oh-my-zsh/custom
 

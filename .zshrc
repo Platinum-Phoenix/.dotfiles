@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+fpath+=$HOME/.zsh/pure
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -79,7 +80,7 @@ DISABLE_AUTO_UPDATE="true"
 plugins=( git nvm vscode zsh-syntax-highlighting )
 
 source $ZSH/oh-my-zsh.sh
-# .zshrc
+
 autoload -U promptinit; promptinit
 prompt pure
 
