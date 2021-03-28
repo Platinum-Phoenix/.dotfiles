@@ -25,7 +25,8 @@ call plug#end()
 
 " Color Theme
 set background=dark
-" let g:onedark_terminal_italics=1
+set termguicolors
+let g:onedark_terminal_italics=1
 colorscheme onedark
 
 " Show line numbers
