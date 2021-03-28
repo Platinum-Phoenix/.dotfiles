@@ -6,7 +6,6 @@
 #   Phoenix
 # 
 
-
 ###############################
 # =| Variables
 
@@ -40,7 +39,7 @@ status() {
     echo "${STATUS}${BOLD}[$1]${RESET}"
 }
 
-showHelp() {
+show_help() {
     cat <<EOF
 Usage: install [options]
 
@@ -55,6 +54,14 @@ EOF
 
 ###############################
 # =| Main
+status "configuring"
+printf "Is <\x1b[38;2;255;100;0mTHIS\x1b[0m> in red?\n"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) HAS_TRUE_COLOR=1;;
+        No ) HAS_TRUE_COLOR=0;;
+    esac
+done
 
 status "install"
 
@@ -63,17 +70,13 @@ mkdir -p "$HOME/.zsh"
 status "fetching utility programs"
 
 echo "oh-my-zsh"
-sh -c "$(curl -fsSL ${GITHUB_RAW}/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL "${GITHUB_RAW}/ohmyzsh/ohmyzsh/master/tools/install.sh")"
 
 echo "zsh-syntax-highlighting"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
     "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
 
-echo "clang-format.py"
-curl "${GITHUB_RAW}/llvm-mirror/clang/master/tools/clang-format/clang-format.py" \
-    > clang-format.py
-
-git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+git clone "https://github.com/sindresorhus/pure.git" "$HOME/.zsh/pure"
 
 status "linking"
 
@@ -88,4 +91,4 @@ for file in "${DOTFILES[@]}"; do
 done
 
 lnk custom .oh-my-zsh/custom
-
+echo "HAS_TRUE_COLOR=${HAS_TRUE_COLOR}" > "custom/custom.zsh"

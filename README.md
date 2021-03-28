@@ -1,5 +1,5 @@
 # ~/.dotfiles
-My dotfiles for macOS
+My dotfiles for Unix-based systems
 
 ## Configure
 1. Install the macOS command line tools
