@@ -29,10 +29,10 @@ call plug#begin()
   Plug 'joshdick/onedark.vim'
   " File browser
   Plug 'preservim/nerdtree'
-  " clang-format
-  Plug 'rhysd/vim-clang-format'
   " Like vscode intellisense
   Plug 'ycm-core/YouCompleteMe', { 'do': function('BuildYCM') }
+
+  Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " Color Theme
@@ -63,6 +63,11 @@ autocmd BufNewFile,BufRead *.asm set ft=nasm
 autocmd BufNewFile,BufRead *.s set ft=asm
 
 nn <C-t> :NERDTreeToggle<CR>
+" Some VSCode Keybindings
+nn <F12> :YcmCompleter GoToDefinition<CR>
+nn <leader>F :YcmCompleter Format<CR> 
+nn <leader>. :YcmCompleter FixIt<CR>
+
 " Use opt+j and opt+k to move indiviudal lines up and down
 " macOS has some weird keyboard stuff so...
 nn ∆ :m .+1<CR>==
