@@ -1,5 +1,5 @@
 # ~/.dotfiles
-My dotfiles for Unix-based systems
+![preview](https://raw.githubusercontent.com/Platinum-Phoenix/.dotfiles/master/img/screenshot.png)
 
 ## Configure
 1. Install the macOS command line tools

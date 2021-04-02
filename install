@@ -4,7 +4,6 @@
 #   into `~/.dotfiles.old`
 # Author:
 #   Phoenix
-# 
 
 ###############################
 # =| Variables
@@ -16,7 +15,7 @@ ERROR=`tput setaf 1`
 RESET=`tput sgr0`
 
 DOTFILES=( \
-    ".zshrc" ".vimrc" ".gitignore" ".gitconfig" "Brewfile" ".tmux.conf" \
+    \ ".zshrc" ".vimrc" ".gitignore" ".gitconfig" "Brewfile" ".tmux.conf"
 )
 
 # Change this to decide where your dotfiles go
@@ -55,13 +54,15 @@ EOF
 ###############################
 # =| Main
 status "configuring"
-printf "Is <\x1b[38;2;255;100;0mTHIS\x1b[0m> in red?\n"
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes ) HAS_TRUE_COLOR=1;;
-        No ) HAS_TRUE_COLOR=0;;
-    esac
-done
+# printf "Is <\x1b[38;2;255;100;0mTHIS\x1b[0m> in red?\n"
+#if ! grep -Fqx "HAS_TRUE_COLOR" "custom/config.zsh"; then
+#    select yn in "Yes" "No"; do
+#        case $yn in
+#            Yes ) echo "HAS_TRUE_COLOR=1" >> "custom/config.zsh"; break;;
+#            No )  echo "HAS_TRUE_COLOR=0" >> "custom/config.zsh"; break;;
+#        esac
+#    done
+#fi
 
 status "install"
 
@@ -73,22 +74,23 @@ echo "oh-my-zsh"
 sh -c "$(curl -fsSL "${GITHUB_RAW}/ohmyzsh/ohmyzsh/master/tools/install.sh")"
 
 echo "zsh-syntax-highlighting"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+git clone "https://github.com/zsh-users/zsh-syntax-highlighting.git" \
     "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
 
 git clone "https://github.com/sindresorhus/pure.git" "$HOME/.zsh/pure"
 
-status "linking"
+status "linking dotfilesi"
 
 for file in "${DOTFILES[@]}"; do
     echo $file
     if [ -f "~/$file" ]; then
         echo "~/$file already exists; backing it up as ~/dotfiles.old/$file/ ..."
         mv "~/$file" ~/.dotfiles.old/$file/
-    fi
 
+    fi
     lk "$file"
 done
 
 lnk custom .oh-my-zsh/custom
-echo "HAS_TRUE_COLOR=${HAS_TRUE_COLOR}" > "custom/custom.zsh"
+# Be reinstall safe
+# vim:ft=bash
