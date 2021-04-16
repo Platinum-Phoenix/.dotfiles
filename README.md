@@ -1,5 +1,5 @@
 # ~/.dotfiles
-[preview](https://raw.githubusercontent.com/Platinum-Phoenix/.dotfiles/master/img/screenshot.png)
+![preview](https://raw.githubusercontent.com/Platinum-Phoenix/.dotfiles/master/img/screenshot.png)
 
 ## Install
 1. On macOS first install the macOS command line tools
