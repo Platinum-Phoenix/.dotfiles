@@ -56,8 +56,11 @@ set number
 
 set laststatus=2
 set noshowmode
-colorscheme onedark
+set foldmethod=syntax
+set nofoldenable
 
+colorscheme onedark
+let g:ycm_confirm_extra_conf = 0
 augroup YCMConfig
   autocmd!
   " Use markdown in rust documentation
@@ -67,16 +70,16 @@ augroup YCMConfig
         \ }
 augroup END
 
-" Use 4 spaces for indentation in c-family languages.
-autocmd FileType c,cpp,objc setl et ts=4 sw=4 ci sts=4 
+autocmd FileType c,cpp,objc setl et sta
 " Use an indentation of 2 spaces in xml-like files.
 autocmd FileType html,xhtml,css,xml,xslt setl et ts=2 sw=2 sts=2
 " In Makefiles, don't use tabs (because they are necessary).
 autocmd FileType make setl noexpandtab ts=4 shiftwidth=4 softtabstop=4
 " Use tabs in assembly and set the default assembler syntax to NASM.
 let g:asmsyntax = "nasm"
-autocmd FileType asm setl noet sw=8 sts=0 syntax=nasm
+autocmd FileType nasm setl et ts=4 sw=4 sts=4 syntax=nasm
 autocmd BufNewFile,BufRead *.asm set ft=nasm
+autocmd BufNewFile,BufRead *.inc set ft=nasm
 autocmd BufNewFile,BufRead *.s set ft=asm
 
 nn <C-t> :NERDTreeToggle<CR>
@@ -87,7 +90,3 @@ nn <leader>. :YcmCompleter FixIt<CR>
 nn <C-s> :w<CR>
 ino <C-s> <Esc> :w<CR>i
 nn <leader><C-s> :wa<CR>
-
-" Use the arrow keys to move indiviudal lines up and down
-nn <Up> :m .-2<CR>==
-nn <Down> :m .+1<CR>==
