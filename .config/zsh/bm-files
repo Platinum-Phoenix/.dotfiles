@@ -1,0 +1,6 @@
+bf	${XDG_CONFIG_HOME:-$HOME/.config}/zsh/bm-files # This file, A list of bookmarked files
+bd	${XDG_CONFIG_HOME:-$HOME/.config}/zsh/bm-dirs # A list of bookmarked directories
+cfv ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim # vim config
+cfz	$ZDOTDIR/.zshrc	# zsh config
+cfa	${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliases	# aliases used by zsh
+cfp	${XDG_CONFIG_HOME:-$HOME/.config}/zsh/profile	# profile file for login settings for zsh

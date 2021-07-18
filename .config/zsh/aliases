@@ -1,0 +1,15 @@
+#!/bin/sh
+
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+	vim="nvim" \
+	dim="brightness 0.005" \
+	reveal="open -R" \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	killbg='kill ${${(v)jobstates##*:*:}%=*}'
+
+alias cfg="git --git-dir=$HOME/.cfg.git/ --work-tree=$HOME"
