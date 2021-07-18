@@ -1,0 +1,27 @@
+#!/bin/zsh
+
+export PATH="$PATH:$HOME/.local/bin"
+export EDITOR="nvim"
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_BIN_HOME="$HOME/.local/bin"
+
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
+export RUSTUP_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/rustup"
+export GHCUP_USE_XDG_DIRS=1
+export GEM_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/gem"
+# Don't save history in less
+export LESSHISTFILE="-"
+source "${XDG_DATA_HOME:-$HOME/.local/share}/cargo/env"
+
+# macOS specific things
+if [ $(uname -s) = "Darwin" ]; then
+	# make GNU commands available
+	export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+	export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
+	#?
+	export CUPS_CACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}/cups"
+fi
