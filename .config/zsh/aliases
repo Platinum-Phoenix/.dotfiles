@@ -8,6 +8,7 @@ alias \
 	dim="brightness 0.005" \
 	reveal="open -R" \
 	ls="ls -hN --color=auto --group-directories-first" \
+	la="ls -A"
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	killbg='kill ${${(v)jobstates##*:*:}%=*}'
