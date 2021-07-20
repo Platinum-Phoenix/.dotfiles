@@ -22,9 +22,8 @@ fi
 
 # macOS specific things
 if [ $(uname -s) = "Darwin" ]; then
-	# make GNU commands available
-	export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-	export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
-	#?
-	export CUPS_CACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}/cups"
+    # make GNU commands available
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
+    export CUPS_CACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}/cups"
 fi
