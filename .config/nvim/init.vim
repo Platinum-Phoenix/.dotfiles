@@ -33,7 +33,7 @@ call plug#end()
 " Section: Theme ----------------------------------- {{{
 set background=dark
 colorscheme nord
-if $COLORTERM == 'truecolor' && has('termguicolors')
+if has('termguicolors')
   set termguicolors
 endif
 " }}}
