@@ -27,3 +27,5 @@ if [ $(uname -s) = "Darwin" ]; then
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
     export CUPS_CACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}/cups"
 fi
+
+# vim: shiftwidth=4 expandtab softtabstop=-1 autoindent
