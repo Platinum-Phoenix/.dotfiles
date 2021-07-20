@@ -15,7 +15,10 @@ export GHCUP_USE_XDG_DIRS=1
 export GEM_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/gem"
 # Don't save history in less
 export LESSHISTFILE="-"
-source "${XDG_DATA_HOME:-$HOME/.local/share}/cargo/env"
+
+if [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/cargo/env" ]; then
+    source "${XDG_DATA_HOME:-$HOME/.local/share}/cargo/env"
+fi
 
 # macOS specific things
 if [ $(uname -s) = "Darwin" ]; then
