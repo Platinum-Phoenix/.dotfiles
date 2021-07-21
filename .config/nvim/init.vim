@@ -4,7 +4,9 @@
 " Author:
 "   Phoenix
 "
+
 " Section: Vim-Plug --------------------------- {{{
+
 set nocompatible
 " I use vim-plug: https://github.com/junegunn/vim-plug
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')"
@@ -98,10 +100,6 @@ let g:lightline = {
       \ [ 'mode', 'paste'],
       \ [ 'cocstatus', 'readonly', 'filename', 'modified' ]
     \ ]
-  \ },
-  \ 'separator': {
-    \ 'left': "\uE0B0", 
-    \ 'right': "\uE0B2" 
   \ },
   \ 'component_function': {
     \ 'cocstatus': 'coc#status'
