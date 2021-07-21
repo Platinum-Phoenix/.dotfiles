@@ -252,7 +252,8 @@ augroup snippets
   autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
 augroup END
 " }}}
- " Map F8 to Tagbar
+
+" Ctrl+D for Tagbar
 nnoremap <C-d> :TagbarToggle<CR>
 " Section: Nerd Tree config ----------------------------------- {{{
 nnoremap <C-t> :NERDTreeToggle<CR>
