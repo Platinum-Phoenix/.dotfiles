@@ -210,8 +210,7 @@ augroup tab_config
   autocmd!
   autocmd FileType c,cpp,objc setlocal expandtab cindent
   " Use an indentation of 2 spaces in xml-like files.
-  autocmd FileType html,xhtml,css,xml,xslt setlocal expandtab tabstop=2
-        \ shiftwidth=2 softtabstop=2
+  autocmd FileType html,xhtml,css,xml,xslt setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
   " In Makefiles, don't use tabs (because they are necessary).
   autocmd FileType make setlocal noexpandtab ts=4 shiftwidth=4 softtabstop=4
