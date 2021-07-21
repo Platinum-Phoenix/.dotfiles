@@ -213,7 +213,7 @@ augroup tab_config
   autocmd FileType html,xhtml,css,xml,xslt setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
   " In Makefiles, don't use tabs (because they are necessary).
-  autocmd FileType make setlocal noexpandtab ts=4 shiftwidth=4 softtabstop=4
+  autocmd FileType make setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 augroup END
 
 " enable spell checking in text and markdown files
@@ -228,10 +228,10 @@ let c_syntax_for_h = 1
 
 augroup assembly
   autocmd!
-  autocmd FileType nasm setl et ts=4 sw=4 sts=4 syntax=nasm
-  autocmd BufNewFile,BufRead *.asm set ft=nasm
-  autocmd BufNewFile,BufRead *.inc set ft=nasm
-  autocmd BufNewFile,BufRead *.s set ft=asm
+  autocmd FileType nasm setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 syntax=nasm
+  autocmd BufNewFile,BufRead *.asm set filetype=nasm
+  autocmd BufNewFile,BufRead *.inc set filetype=nasm
+  autocmd BufNewFile,BufRead *.s set filetype=asm
 augroup END
 
 " Section: Vimscript file settings -------------------- {{{
