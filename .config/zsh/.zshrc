@@ -29,7 +29,6 @@ fi
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 fi
-
 autoload -Uz compinit
 zstyle ':completion:*' completer _complete _ignored
 zstyle ':completion:*' menu select
@@ -54,4 +53,7 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
-source "${XDG_DATA_HOME:-$HOME/.local/share}/fsh/fast-syntax-highlighting.plugin.zsh"
+# zsh syntax highlighting
+if [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/fsh/fast-syntax-highlighting.plugin.zsh"]; then
+	source "${XDG_DATA_HOME:-$HOME/.local/share}/fsh/fast-syntax-highlighting.plugin.zsh"
+fi
