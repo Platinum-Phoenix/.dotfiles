@@ -20,6 +20,11 @@ if [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/cargo/env" ]; then
     source "${XDG_DATA_HOME:-$HOME/.local/share}/cargo/env"
 fi
 
+# other environment variables
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/env" ]; then
+    source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/env"
+fi
+
 # macOS specific things
 if [ $(uname -s) = "Darwin" ]; then
     # make GNU commands available
