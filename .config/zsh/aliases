@@ -14,3 +14,6 @@ alias \
 	killbg='kill ${${(v)jobstates##*:*:}%=*}'
 
 alias cfg="git --git-dir=$HOME/.cfg.git/ --work-tree=$HOME"
+
+# macOS Only
+alias preview="open -a Preview"
